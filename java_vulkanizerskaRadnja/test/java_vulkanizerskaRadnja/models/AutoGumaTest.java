@@ -84,50 +84,47 @@ class AutoGumaTest {
 	 * {@link java_vulkanizerskaRadnja.models.AutoGuma#setPrecnik(int)}.
 	 */
 
-	@ParameterizedTest
-	@CsvSource({ "16" })
-	void testSetPrecnik(int precnik) {
-		ag.setPrecnik(precnik);
-		assertEquals(precnik, ag.getPrecnik());
+	@Test
+	void testSetPrecnik() {
+		ag.setPrecnik(17);
+		assertEquals(17, ag.getPrecnik());
 	}
 
 	@ParameterizedTest
-	@CsvSource({ "0,25" })
-	void testSetPrecnikOpseg(int precnik1, int precnik2) {
-		assertThrows(java.lang.RuntimeException.class, () -> ag.setPrecnik(precnik1));
-		assertThrows(java.lang.RuntimeException.class, () -> ag.setPrecnik(precnik2));
+	@CsvSource({ "0","24","25","1234" })
+	void testSetPrecnikOpseg(int precnik) {
+		assertThrows(java.lang.RuntimeException.class, () -> ag.setPrecnik(precnik));
+	
 	}
 
 	/**
 	 * Test method for
 	 * {@link java_vulkanizerskaRadnja.models.AutoGuma#setSirina(int)}.
 	 */
-	@ParameterizedTest
-	@CsvSource({ "200" })
-	void testSetSirina(int sirina) {
-		ag.setSirina(sirina);
-		assertEquals(sirina, ag.getSirina());
+	@Test
+	void testSetSirina() {
+		ag.setSirina(200);
+		assertEquals(200, ag.getSirina());
 	}
 
 	@ParameterizedTest
-	@CsvSource({ "100,400" })
-	void testSetSirinaOpseg(int sirina1, int sirina2) {
-		assertThrows(java.lang.RuntimeException.class, () -> ag.setSirina(sirina1));
-		assertThrows(java.lang.RuntimeException.class, () -> ag.setSirina(sirina2));
+	@CsvSource({ "100","700","500" })
+	void testSetSirinaOpseg(int sirina) {
+		assertThrows(java.lang.RuntimeException.class, () -> ag.setSirina(sirina));
+	
+	}
+
+	@Test
+	void testSetVisina() {
+		ag.setVisina(50);
+		assertEquals(50, ag.getVisina());
 	}
 
 	@ParameterizedTest
-	@CsvSource({ "50" })
-	void testSetVisina(int visina) {
-		ag.setVisina(visina);
-		assertEquals(visina, ag.getVisina());
-	}
-
-	@ParameterizedTest
-	@CsvSource({ "100,400" })
-	void testSetVisinaOpseg(int visina1, int visina2) {
-		assertThrows(java.lang.RuntimeException.class, () -> ag.setVisina(visina1));
-		assertThrows(java.lang.RuntimeException.class, () -> ag.setVisina(visina2));
+	@CsvSource({ "100","450","1000","400" })
+	void testSetVisinaOpseg(int visina) {
+		assertThrows(java.lang.RuntimeException.class, () -> ag.setVisina(visina));
+		
 	}
 
 	@Test
